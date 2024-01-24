@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Simple To-do List</title>
+	</head>
+	<body>
+		<h1>To-do List</h1>
+		<form>
+			<label for="taskName">Task: </label>
+			<input type="text" id="taskName" name="taskName">
+			<input type="button" id="addTask" value="Add Task">
+		</form>
+		<span class="errorMsg"></span>
+		<div class="taskListWrapper">
+			<ol class="taskList">
+			</ol>
+		</div>
+		<script src="index.js"></script>
+	</body>
+</html>
