@@ -21,11 +21,15 @@ addTaskButton.addEventListener("click", (e) => {
 
 function renderList() {
 	taskListElement.innerHTML = taskList.map((task, pos) => {
-		return `<li>${task} <button class="deleteButton" onClick="deleteTask(${pos})">Delete</button><button class="editButton">Edit</button></li>`;
+		return `<li>${task} <button class="deleteButton" onClick="deleteTask(${pos})">Delete</button><button class="editButton" onClick="editTask(event)">Edit</button></li><span></span>`;
 	}).join('');
 }
 
 function deleteTask(pos) {
 	taskList.splice(pos, 1);
 	renderList();
+}
+
+function editTask(e) {
+	e.target.parentElement.innerHTML = `<li><input type="text"></input><button>Save Edit</button></li>`;
 }
