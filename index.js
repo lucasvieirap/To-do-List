@@ -21,7 +21,7 @@ addTaskButton.addEventListener("click", (e) => {
 
 function renderList() {
 	taskListElement.innerHTML = taskList.map((task, pos) => {
-		return `<li>${task} <button class="deleteButton" onClick="deleteTask(${pos})">Delete</button><button class="editButton" onClick="editTask(event)">Edit</button></li><span></span>`;
+		return `<li>${task} <button class="deleteButton" onClick="deleteTask(${pos})">Delete</button><button class="editButton" onClick="editTask(event, ${pos})">Edit</button></li><span></span>`;
 	}).join('');
 }
 
@@ -30,6 +30,15 @@ function deleteTask(pos) {
 	renderList();
 }
 
-function editTask(e) {
-	e.target.parentElement.innerHTML = `<li><input type="text"></input><button>Save Edit</button></li>`;
+function editTask(e, pos) {
+	e.target.parentElement.innerHTML = `<li><input type="text"></input><button onClick="saveEdit(event, ${pos})">Save Edit</button></li>`;
+}
+
+function saveEdit(e, pos) {
+	for (const child of e.target.parentElement.children) {
+		if (child.tagName == "INPUT") {
+			taskList[pos] = child.value;
+		}
+	}
+	renderList();
 }
